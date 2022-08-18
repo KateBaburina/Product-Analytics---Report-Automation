@@ -146,7 +146,7 @@ def dag_report_baburina():
         plt.savefig(plot_object)
         # Moving the cursor at the beginning of the file object
         plot_object.seek(0)
-        # Называем объект
+        # Naming the object
         plot_object.name = 'Feed_metrics_plot.png'
         # Closing matplotlib.pyplot
         plt.close()
