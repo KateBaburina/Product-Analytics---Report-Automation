@@ -33,7 +33,7 @@ default_args = {
 # Интервал запуска DAG
 schedule_interval = '0 11 * * *'
 
-my_token = '5459195150:AAFvzrjCRiweqxr31LlCYTfiLboDV4CPgYY'
+my_token = os.environ.get("REPORT_BOT_TOKEN")
 bot = telegram.Bot(token = my_token)
 
 @dag(default_args=default_args, schedule_interval=schedule_interval, catchup=False)
