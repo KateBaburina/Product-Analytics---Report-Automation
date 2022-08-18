@@ -21,7 +21,7 @@ connection = {'host': 'https://clickhouse.lab.karpov.courses',
                       'password':'dpo_python_2020'
                      }
 
-# Дефолтные параметры, которые прокидываются в таски
+# Default parameteres that will be used in tasks
 default_args = {
     'owner': 'e-baburina-9',
     'depends_on_past': False,
@@ -30,7 +30,7 @@ default_args = {
     'start_date': datetime(2022, 8, 5),
 }
 
-# Интервал запуска DAG
+# DAG schedule interval - cron - 11 am every day
 schedule_interval = '0 11 * * *'
 
 my_token = os.environ.get("REPORT_BOT_TOKEN")
@@ -198,14 +198,14 @@ def dag_report_baburina_app():
         plt.plot(x7, y8, color='g')
 
         plt.show()
-        # Создаем файловый объект, чтобы не выгружать файл локально
+        # Creating the file object, so we do not need to store the plot locally to save space
         plot_object =io.BytesIO()
         plt.savefig(plot_object)
-        # Перемещаем курсор в начало строки файлового объекта
+        # Moving the cursor at the beginning of the file object
         plot_object.seek(0)
-        # Называем объект
+        # Naming the object
         plot_object.name = 'Feed_metrics_plot.png'
-        # Закрываем matplotlib.pyplot
+        # Closing matplotlib.pyplot
         plt.close()
         bot.sendPhoto(chat_id=chat_id, photo=plot_object)
 
