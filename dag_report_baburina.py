@@ -15,10 +15,10 @@ import pandahouse as ph
 import io
 import matplotlib.pyplot as plt
    
-connection = {'host': 'https://clickhouse.lab.karpov.courses',
-                      'database':'simulator_20220720',
+connection = {'host': HOST,
+                      'database':DB,
                       'user':'student', 
-                      'password':'dpo_python_2020'
+                      'password':PWD
                      }
 
 # Default parameteres that will be used in tasks
@@ -41,7 +41,7 @@ def dag_report_baburina():
     
     @task()
     def message(chat=None):
-        chat_id = chat or -770113521
+        chat_id = chat or CHAT1
 
 
         query = '''
@@ -60,7 +60,7 @@ def dag_report_baburina():
   
     @task()
     def report(chat=None):
-        chat_id = chat or -770113521
+        chat_id = chat or CHAT1
         
         query1 = '''
         select 
